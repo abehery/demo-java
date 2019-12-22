@@ -5,7 +5,7 @@ pipeline {
     stages {
         stage('Test') {
             steps {
-                sh 'mvn clean package -DskipTests'
+                sh 'ls -l'
             }
         }
     }
