@@ -1,6 +1,6 @@
 pipeline {
     agent {
-        docker { image 'maven' }
+        docker { image 'slave-mvn-11' }
     }
     stages {
         stage('Test') {
