@@ -1,6 +1,10 @@
 pipeline {
     agent {
-        docker { image 'slave-mvn-11' }
+        docker { 
+            image 'slave-mvn-11'
+            args '-u root -v /var/run/docker.sock:/var/run/docker.sock'
+        }
+        
     }
     stages {
         stage('Test') {
@@ -8,7 +12,7 @@ pipeline {
                 script{
                 sh 'ls -l'
                 sh 'touch aymantest'
-                def image = docker.build("chs/uaa-keycloak:latest", "--label UAA_VERSION=${uaa_version} --build-arg uaa_version=${uaa_version} .")
+                def image = docker.build("chs/uaa-keycloak:latest")
                 }
             }
         }
